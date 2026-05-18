@@ -1,13 +1,10 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
+import { initChatListener } from './chat';
 
 window.Alpine = Alpine;
 
 Alpine.start();
 
-window.Echo.channel('chat')
-    .listen('MessageSent', (e) => {
-        console.log(e.message);
-        alert(e.message);
-    });
+initChatListener();
