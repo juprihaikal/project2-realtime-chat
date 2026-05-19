@@ -89,4 +89,3 @@ php artisan reverb:start
 npm run dev
 ```
 
-Buka browser dan akses aplikasi di: `http://localhost:8000`
