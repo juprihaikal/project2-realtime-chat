@@ -24,7 +24,7 @@
         </div>
 
         {{-- CONVERSATION LIST --}}
-        <div class="flex-1 overflow-y-auto">
+        <div id="conversations-list" class="flex-1 overflow-y-auto">
             @forelse ($conversations as $conversation)
                 @php
                     $lastMessage = $conversation->messages->first();

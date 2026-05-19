@@ -40,6 +40,8 @@ class ChatController extends Controller
         if (! $conversation) {
             $conversation = Conversation::create(['type' => 'private']);
             $conversation->users()->attach([auth()->id(), $validated['user_id']]);
+            
+            broadcast(new \App\Events\ConversationCreated($conversation));
         }
 
         return redirect()->route('chat.show', $conversation);
@@ -65,6 +67,8 @@ class ChatController extends Controller
         ]);
 
         $conversation->users()->attach($memberIds);
+
+        broadcast(new \App\Events\ConversationCreated($conversation));
 
         return redirect()->route('chat.show', $conversation);
     }
