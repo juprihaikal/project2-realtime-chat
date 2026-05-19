@@ -13,16 +13,17 @@ Aplikasi web real-time chat interaktif dengan fitur private chat, group chat, da
 
 ### Backend
 - PHP 8+
-- Laravel 12 (Framework)
-- Laravel Breeze (Starter Kit Authentication)
-- Laravel Reverb (Websocket Server)
-- MySQL (Database)
+- Laravel 12
+- Laravel Breeze 
+- Laravel Reverb 
+- MySQL
 
 ### Frontend
-- Laravel Blade (Template Engine)
-- Tailwind CSS (Styling)
-- Vanilla JavaScript & Alpine.js (Interaktivitas)
-- Laravel Echo & Pusher JS (Websocket Client)
+- Laravel Blade 
+- Tailwind CSS
+- Vanilla JavaScript & Alpine.js
+- Laravel Echo
+- Pusher JS
 
 ## Cara Install
 
