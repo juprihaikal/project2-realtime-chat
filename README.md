@@ -29,7 +29,7 @@ Aplikasi web real-time chat interaktif dengan fitur private chat, group chat, da
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/juprihaikal/realtime-chat
+git clone https://github.com/juprihaikal/project2-realtime-chat.git
 cd realtime-chat
 ```
 
