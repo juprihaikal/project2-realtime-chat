@@ -1,4 +1,4 @@
-# RMD Connect - Realtime Chat Application
+# Realtime Chat Application
 
 Aplikasi web real-time chat interaktif dengan fitur private chat, group chat, dan tracking status online/offline pengguna secara realtime.
 
@@ -13,22 +13,23 @@ Aplikasi web real-time chat interaktif dengan fitur private chat, group chat, da
 
 ### Backend
 - PHP 8+
-- Laravel 12
+- Laravel 12 (Framework)
+- Laravel Breeze (Starter Kit Authentication)
 - Laravel Reverb (Websocket Server)
-- MySQL
+- MySQL (Database)
 
 ### Frontend
-- Tailwind CSS (menggantikan Bootstrap)
-- Vanilla JavaScript & Alpine.js
-- Laravel Echo
-- Pusher JS
+- Laravel Blade (Template Engine)
+- Tailwind CSS (Styling)
+- Vanilla JavaScript & Alpine.js (Interaktivitas)
+- Laravel Echo & Pusher JS (Websocket Client)
 
 ## Cara Install
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/ramanda456/rmd_connect.git
-cd rmd_connect
+git clone <URL_GITHUB_LU_NANTI> realtime-chat
+cd realtime-chat
 ```
 
 ### 2. Install Dependency
@@ -48,15 +49,15 @@ php artisan key:generate
 ```
 
 ### 5. Buat Database
-Buat database bernama:
-`rmd_connect`
+Buat database di MySQL/phpMyAdmin dengan nama:
+`realtime-chat`
 
-Lalu atur koneksi database di file `.env`:
+Pastikan settingan database di file `.env` lu udah sesuai:
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=rmd_connect
+DB_DATABASE=realtime-chat
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -66,22 +67,13 @@ DB_PASSWORD=
 php artisan migrate
 ```
 
-### 7. Install Broadcasting (Opsional, jika belum terinstall)
-```bash
-php artisan install:broadcasting
-```
-Pilih: `reverb`
-
-### 8. Install Echo & Pusher (Opsional, jika belum ada di package.json)
-```bash
-npm install --save-dev laravel-echo pusher-js
-```
+*(Catatan: Package Reverb, Echo, dan Pusher-JS sudah otomatis terinstall lewat perintah `composer install` dan `npm install` di atas, jadi tidak perlu install ulang)*
 
 ## Menjalankan Aplikasi
 
-Jalankan 3 terminal secara bersamaan untuk menjalankan aplikasi secara penuh:
+Jalankan 3 terminal secara bersamaan untuk menjalankan aplikasi:
 
-**Terminal 1 (Menjalankan server PHP):**
+**Terminal 1 (Menjalankan server Laravel):**
 ```bash
 php artisan serve
 ```
@@ -91,9 +83,9 @@ php artisan serve
 php artisan reverb:start
 ```
 
-**Terminal 3 (Menjalankan asset bundler):**
+**Terminal 3 (Menjalankan Vite asset bundler):**
 ```bash
 npm run dev
 ```
 
-Buka browser dan akses: `http://localhost:8000`
+Buka browser dan akses aplikasi di: `http://localhost:8000`
