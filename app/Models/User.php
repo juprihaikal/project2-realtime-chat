@@ -11,13 +11,12 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
-    
+
     public function conversations()
-{
-    return $this->belongsToMany(
-        Conversation::class
-    );
-}
+    {
+        return $this->belongsToMany(Conversation::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -27,6 +26,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_online',
+        'last_seen',
     ];
 
     /**
@@ -48,7 +49,31 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'last_seen'         => 'datetime',
+            'is_online'         => 'boolean',
+            'password'          => 'hashed',
         ];
+    }
+
+    /**
+     * Mark user as online.
+     */
+    public function markAsOnline(): void
+    {
+        $this->update([
+            'is_online' => true,
+            'last_seen' => now(),
+        ]);
+    }
+
+    /**
+     * Mark user as offline.
+     */
+    public function markAsOffline(): void
+    {
+        $this->update([
+            'is_online' => false,
+            'last_seen' => now(),
+        ]);
     }
 }

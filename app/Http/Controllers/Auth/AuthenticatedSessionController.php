@@ -28,7 +28,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Mark user as online saat login
+        Auth::user()->markAsOnline();
+
+        return redirect()->intended(route('chat.index', absolute: false));
     }
 
     /**
@@ -36,12 +39,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Mark user as offline sebelum logout
+        if (Auth::check()) {
+            Auth::user()->markAsOffline();
+        }
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        // Redirect ke halaman login
+        return redirect()->route('login');
     }
 }
